@@ -1,6 +1,6 @@
 # Hue MQTT Bridge
 
-[![CI](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/ci.yml) [![Docs](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/pages.yml/badge.svg)](https://tobiaswaelde.github.io/hue-mqtt-bridge/) [![Deploy](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/deploy.yml/badge.svg)](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/deploy.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/hue-mqtt-bridge/ci.yml?style=for-the-badge&label=CI)](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/ci.yml) [![Docs](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/hue-mqtt-bridge/pages.yml?style=for-the-badge&label=Docs)](https://tobiaswaelde.github.io/hue-mqtt-bridge/) [![Deploy](https://img.shields.io/github/actions/workflow/status/tobiaswaelde/hue-mqtt-bridge/deploy.yml?style=for-the-badge&label=Deploy)](https://github.com/tobiaswaelde/hue-mqtt-bridge/actions/workflows/deploy.yml)
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-tobiaswaelde-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tobiaswaelde)
 
@@ -45,4 +45,11 @@ Example command:
 mosquitto_pub -h mqtt.example.net -t 'home/hue/living-room/cmd' -m '{"cmd":"set-light-state","light":"1","state":{"on":true,"bri":180}}'
 ```
 
-See the [configuration](https://tobiaswaelde.github.io/hue-mqtt-bridge/configuration), [MQTT contract](https://tobiaswaelde.github.io/hue-mqtt-bridge/mqtt), [authentication](https://tobiaswaelde.github.io/hue-mqtt-bridge/authentication), and [deployment guide](https://tobiaswaelde.github.io/hue-mqtt-bridge/deployment).
+## Documentation
+
+- [Documentation home](https://tobiaswaelde.github.io/hue-mqtt-bridge/)
+- [Configuration](https://tobiaswaelde.github.io/hue-mqtt-bridge/configuration)
+- [Authentication](https://tobiaswaelde.github.io/hue-mqtt-bridge/authentication)
+- [MQTT contract](https://tobiaswaelde.github.io/hue-mqtt-bridge/mqtt)
+- [Docker deployment](https://tobiaswaelde.github.io/hue-mqtt-bridge/deployment)
+- [WLED MQTT Bridge for WLED controllers](https://tobiaswaelde.github.io/wled-mqtt-bridge/)

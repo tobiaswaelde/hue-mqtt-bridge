@@ -12,8 +12,8 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Creates the class instance.
-   * @param cfg - Value of type `{ id: string; enabled: boolean; topic: string; host: string; username: string; interval: number; lights: { id: string; }[]; }`.
-   * @param mqtt - Value of type `MqttBridgeClient`.
+   * @param {{ id: string; enabled: boolean; topic: string; host: string; username: string; interval: number; lights: { id: string; }[]; }} cfg The cfg value.
+   * @param {MqttBridgeClient} mqtt The mqtt value.
    */
   constructor(cfg: HueConfig, mqtt: MqttBridgeClient) {
     super(cfg, mqtt, `HUE@${cfg.host}`, `http://${cfg.host}/api/${cfg.username}`);
@@ -21,7 +21,7 @@ export class Hue extends HttpMqttBridge<HueConfig> {
   //#region instance lifecycle
   /**
    * Executes `setup`.
-   * @returns Result of type `void`.
+   * @returns {void} Result.
    */
   public setup() {
     this.logger.debug(`Setting up Hue instance for host: ${this.cfg.host}`);
@@ -37,7 +37,7 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Executes `destroy`.
-   * @returns Result of type `void`.
+   * @returns {void} Result.
    */
   public override destroy() {
     this.mqtt.publish(`${this.cfg.topic}/connected`, false);
@@ -48,7 +48,7 @@ export class Hue extends HttpMqttBridge<HueConfig> {
   //#region state
   /**
    * Executes `getInstanceState`.
-   * @returns Result of type `Promise<void>`.
+   * @returns {Promise<void>} Result.
    */
   private async getInstanceState() {
     const controller = this.startRequest('instance');
@@ -77,7 +77,7 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Executes `getLightsState`.
-   * @returns Result of type `void`.
+   * @returns {void} Result.
    */
   private getLightsState() {
     for (const light of this.cfg.lights) {
@@ -87,8 +87,8 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Executes `getLightState`.
-   * @param id - Value of type `string`.
-   * @returns Result of type `Promise<void>`.
+   * @param {string} id The id value.
+   * @returns {Promise<void>} Result.
    */
   private async getLightState(id: string) {
     this.logger.debug(`Getting state for light ${id}`);
@@ -119,7 +119,7 @@ export class Hue extends HttpMqttBridge<HueConfig> {
   //#region commands
   /**
    * Executes `subscribeCommands`.
-   * @returns Result of type `void`.
+   * @returns {void} Result.
    */
   private subscribeCommands() {
     if (this.commandsSubscribed) return;
@@ -140,8 +140,8 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Executes `handleCommand`.
-   * @param cmd - Value of type `HueCommandPayload`.
-   * @returns Result of type `void`.
+   * @param {HueCommandPayload} cmd The cmd value.
+   * @returns {void} Result.
    */
   private handleCommand(cmd: HueCommandPayload) {
     switch (cmd.cmd) {
@@ -156,9 +156,9 @@ export class Hue extends HttpMqttBridge<HueConfig> {
 
   /**
    * Executes `setLightState`.
-   * @param light - Value of type `string`.
-   * @param state - Value of type `Record<string, unknown>`.
-   * @returns Result of type `Promise<void>`.
+   * @param {string} light The light value.
+   * @param {Record<string, unknown>} state The state value.
+   * @returns {Promise<void>} Result.
    */
   private async setLightState(light: string, state: Record<string, unknown>) {
     const key = `set-light:${light}`;

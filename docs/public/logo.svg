@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>Hue MQTT Bridge</title>
+  <defs><linearGradient id="hue" x1="0" x2="1"><stop stop-color="#f43f5e"/><stop offset=".5" stop-color="#facc15"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+  <rect width="128" height="128" rx="30" fill="#172554"/>
+  <circle cx="64" cy="55" r="34" fill="url(#hue)"/>
+  <path fill="#fff" d="M53 88h22v10H53zm-5 13h32v11H48z"/>
+  <circle cx="64" cy="55" r="13" fill="#fff" opacity=".9"/>
+</svg>

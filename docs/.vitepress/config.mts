@@ -1,11 +1,13 @@
 import { defineConfig } from 'vitepress';
 export default defineConfig({
-  title: 'Hue Mqtt Bridge',
-  description: 'MQTT bridge documentation',
+  title: 'Hue MQTT Bridge',
+  description: 'Reliable MQTT integration for Philips Hue.',
   base: '/hue-mqtt-bridge/',
   cleanUrls: true,
   lastUpdated: true,
+  head: [['link', { rel: 'icon', href: '/hue-mqtt-bridge/favicon.svg', type: 'image/svg+xml' }]],
   themeConfig: {
+    logo: '/logo.svg',
     nav: [
       { text: 'Guide', link: '/' },
       { text: 'Configuration', link: '/configuration' },
