@@ -22,10 +22,6 @@ mqtt:
   clientId: hue-mqtt-bridge
   username: mqtt-user
   password: change-me
-http:
-  port: 3000
-logging:
-  level: log
 instances:
   - id: living-room
     topic: home/hue/living-room

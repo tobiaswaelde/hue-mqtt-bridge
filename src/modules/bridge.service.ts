@@ -3,6 +3,7 @@ import { CONFIG, type HueConfig } from '~/config/config';
 import type { BridgeInstance } from '~/lib/http-mqtt-bridge';
 import { Hue } from '~/lib/hue';
 import { MqttService } from '~/modules/mqtt/mqtt.service';
+
 /**
  * Executes `BridgeService`.
  */

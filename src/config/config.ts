@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { commonSchema, instanceSchema, loadConfig } from './runtime';
+
 export const configSchema = commonSchema
   .extend({
     instances: z
@@ -14,6 +15,7 @@ export const configSchema = commonSchema
       .min(1),
   })
   .superRefine((value, ctx) => unique(value.instances, ctx));
+
 /**
  * Executes `unique`.
  * @param {{ id: string; topic: string; }[]} instances The instances value.
@@ -26,5 +28,7 @@ function unique(instances: { id: string; topic: string }[], ctx: z.RefinementCtx
       if (instances[prior].id === entry.id || instances[prior].topic === entry.topic)
         ctx.addIssue({ code: 'custom', path: ['instances', index], message: 'instance id and topic must be unique' });
 }
+
 export type HueConfig = z.infer<typeof configSchema>['instances'][number];
+
 export const CONFIG = loadConfig(configSchema);
