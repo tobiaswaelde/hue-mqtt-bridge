@@ -9,7 +9,6 @@ export const configSchema = commonSchema
           host: z.string().min(1),
           username: z.string().min(1),
           interval: z.number().positive().default(10000),
-          lights: z.array(z.object({ id: z.string().min(1) })).min(1),
         }),
       )
       .min(1),

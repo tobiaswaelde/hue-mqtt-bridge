@@ -1,12 +1,12 @@
-export enum HueCommand {
-  GetInstance = 'get-instance',
-  SetLightState = 'set-light-state',
-}
+import { z } from 'zod';
 
-export type HueCommandPayload =
-  | { cmd: HueCommand.GetInstance }
-  | {
-      cmd: HueCommand.SetLightState;
-      light: string;
-      state: Record<string, unknown>;
-    };
+/** A command body accepted on a discovered light's MQTT command topic. */
+export const hueLightCommandSchema = z.object({
+  state: z
+    .record(z.string().min(1), z.union([z.boolean(), z.number().finite(), z.string(), z.array(z.number().finite())]))
+    .refine((state) => Object.keys(state).length > 0, 'state must not be empty'),
+});
+
+export type HueLightCommand = z.infer<typeof hueLightCommandSchema>;
+
+export type HueLight = Record<string, unknown>;

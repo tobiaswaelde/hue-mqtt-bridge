@@ -32,9 +32,8 @@ instances:
     host: 192.168.1.10
     username: hue-api-username
     interval: 10000
-    lights:
-      - id: '1'
-      - id: '2'
 ```
+
+The bridge discovers every lamp available to the Hue API user automatically. `lights` must not be configured.
 
 Do not commit passwords, API usernames, or generated `*.auth.json` files.

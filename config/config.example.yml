@@ -9,6 +9,3 @@ instances:
     host: 192.168.1.10
     username: hue-api-username
     interval: 10000
-    lights:
-      - id: '1'
-      - id: '2'

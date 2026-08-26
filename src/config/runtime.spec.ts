@@ -29,7 +29,9 @@ describe('configuration contract', () => {
     const { configSchema } = await import('./config');
     const example = load(readFileSync(file, 'utf8')) as { instances: Array<Record<string, unknown>> };
     const first = example.instances[0];
-    expect(configSchema.parse(example).instances).toHaveLength(example.instances.length);
+    const config = configSchema.parse(example);
+    expect(config.instances).toHaveLength(example.instances.length);
+    expect(config.instances[0]).not.toHaveProperty('lights');
     expect(() => configSchema.parse({ ...example, instances: [first, { ...first, topic: 'home/other' }] })).toThrow();
     expect(() => configSchema.parse({ ...example, instances: [first, { ...first, id: 'other' }] })).toThrow();
   });

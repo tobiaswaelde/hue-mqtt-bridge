@@ -28,17 +28,15 @@ instances:
     host: 192.168.1.10
     username: hue-api-username
     interval: 10000
-    lights:
-      - id: '1'
-      - id: '2'
 ```
 
 `mqtt.clientId` may be empty; the bridge then generates a UUID for the running process.
+All lamps available through the configured Hue API user are discovered automatically; no lamp IDs need to be configured.
 
 Example command:
 
 ```bash
-mosquitto_pub -h mqtt.example.net -t 'home/hue/living-room/cmd' -m '{"cmd":"set-light-state","light":"1","state":{"on":true,"bri":180}}'
+mosquitto_pub -h mqtt.example.net -t 'home/hue/living-room/lights/1/command/json' -m '{"state":{"on":true,"bri":180}}'
 ```
 
 ## Documentation

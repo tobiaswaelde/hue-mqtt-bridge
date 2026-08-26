@@ -34,11 +34,8 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
     this.logger = new Logger(scope);
     this.api = axios.create({ baseURL });
   }
-  /**
-   * Executes `setup`.
-   * @returns {void} Result.
-   */
   abstract setup(): void;
+
   /**
    * Executes `loop`.
    * @param {number} time The time value.
@@ -51,6 +48,7 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
         void task.task();
       }
   }
+
   /**
    * Executes `destroy`.
    * @returns {void} Result.
@@ -62,6 +60,7 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
     this.requests.clear();
     this.tasks.clear();
   }
+
   /**
    * Executes `subscribe`.
    * @param {string} topic The topic value.
@@ -73,6 +72,7 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
     this.unsubscribers.add(unsubscribe);
     return unsubscribe;
   }
+
   /**
    * Executes `poll`.
    * @param {string} key The key value.
@@ -81,8 +81,9 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
    * @returns {void} Result.
    */
   protected poll(key: string, interval: number, task: () => void | Promise<void>) {
-    this.tasks.set(key, { interval, last: 0, task });
+    this.tasks.set(key, { interval, last: Date.now(), task });
   }
+
   /**
    * Executes `startRequest`.
    * @param {string} key The key value.
@@ -94,6 +95,7 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
     this.requests.set(key, controller);
     return controller;
   }
+
   /**
    * Executes `finishRequest`.
    * @param {string} key The key value.
@@ -103,6 +105,7 @@ export abstract class HttpMqttBridge<T extends object> implements BridgeInstance
   protected finishRequest(key: string, controller: AbortController) {
     if (this.requests.get(key) === controller) this.requests.delete(key);
   }
+
   /**
    * Executes `cancelRequest`.
    * @param {string} key The key value.
