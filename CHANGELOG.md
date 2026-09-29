@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+### Patch Changes
+
+- [`97574aa`](https://github.com/tobiaswaelde/hue-mqtt-bridge/commit/97574aa9517997c22a6cf11f73213b7e1e85bb62) Thanks [@tobiaswaelde](https://github.com/tobiaswaelde)! - Update development dependencies and patch vulnerable transitive dependencies.
+
 ## 0.1.0
 
 ### Minor Changes
